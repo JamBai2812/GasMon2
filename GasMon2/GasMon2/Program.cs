@@ -29,20 +29,14 @@ namespace GasMon
             new AmazonSimpleNotificationServiceClient(BucketRegion);
 
         private const int RunTime = 20;
-        private const int WaitTime = 5;
-        
+
         public static void Main()
         {
             var locationsFetcher = new LocationsFetcher(S3Client);
             var locations = locationsFetcher.GetLocations(BucketName, KeyName);
             var locationIds = locations.Select(l => l.Id).ToList();
             var processor = new MessageProcessor(locationIds);
-
-
             
-
-            
-
             using (var queue = new SubscribedQueue(SqsClient, SnsClient, TopicArn))
             {
                 var timeNow = DateTime.Now;
