@@ -75,8 +75,9 @@ namespace GasMon
 
         private void RemoveOneExpiredReading(ReadingFromSensor reading)
         {
+            var currentTimestamp = DateTimeOffset.Now.ToUnixTimeMilliseconds();
             if (Readings.Count == 0) return;
-            var first = Readings.FirstOrDefault(r => r.Timestamp < reading.Timestamp - _expiryTime);
+            var first = Readings.FirstOrDefault(r => r.Timestamp < currentTimestamp - _expiryTime);
             if (first != null)
             {
                 Readings.Remove(first);
@@ -91,6 +92,18 @@ namespace GasMon
         private bool IsNotDuplicate(ReadingFromSensor reading)
         {
             return !Readings.Contains(reading);
+        }
+
+        public void TakeAverages(ReadingFromSensor reading)
+        {
+            var orderedReadings = Readings.OrderByDescending(r => r.Timestamp);
+            var current
+            var readingsEachMinute = new List<List<ReadingFromSensor>>();
+            readingsEachMinute.Capacity = Math.Round(RunTime / 60);
+            
+            var placeToPutReading = (currentTimestamp - reading.Timestamp) / 60000;
+            
+            readingList[placeToPutReading].Add(reading);
         }
     }
 }

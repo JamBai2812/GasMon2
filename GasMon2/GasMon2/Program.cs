@@ -1,7 +1,8 @@
 ﻿﻿using Amazon.S3;
 using Amazon.S3.Model;
 using System;
-using System.IO;
+ using System.Collections.Generic;
+ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -50,6 +51,13 @@ namespace GasMon
                 }
                 
                 Console.WriteLine("Readings with removals: " + processor.Readings.Count);
+                
+                
+                
+               
+                
+                
+                
                 Console.WriteLine("finished processing messages.");
             }
         }
