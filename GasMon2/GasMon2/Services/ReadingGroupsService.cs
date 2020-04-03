@@ -2,6 +2,11 @@
 {
     public class ReadingGroupsService
     {
+        public ReadingGroupsService()
+        {
+            
+        }
+        
         
     }
 }

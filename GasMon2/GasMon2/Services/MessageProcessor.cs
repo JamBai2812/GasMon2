@@ -94,16 +94,16 @@ namespace GasMon
             return !Readings.Contains(reading);
         }
 
-        public void TakeAverages(ReadingFromSensor reading)
-        {
-            var orderedReadings = Readings.OrderByDescending(r => r.Timestamp);
-            var current
-            var readingsEachMinute = new List<List<ReadingFromSensor>>();
-            readingsEachMinute.Capacity = Math.Round(RunTime / 60);
-            
-            var placeToPutReading = (currentTimestamp - reading.Timestamp) / 60000;
-            
-            readingList[placeToPutReading].Add(reading);
-        }
+        // public void TakeAverages(ReadingFromSensor reading)
+        // {
+        //     var orderedReadings = Readings.OrderByDescending(r => r.Timestamp);
+        //     var current
+        //     var readingsEachMinute = new List<List<ReadingFromSensor>>();
+        //     readingsEachMinute.Capacity = Math.Round(RunTime / 60);
+        //     
+        //     var placeToPutReading = (currentTimestamp - reading.Timestamp) / 60000;
+        //     
+        //     readingList[placeToPutReading].Add(reading);
+        // }
     }
 }
